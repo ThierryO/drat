@@ -14,4 +14,4 @@ build_gh:
             git add --all
             git commit -m "Render markdown"
             git push origin
-          if
+          fi
