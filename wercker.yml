@@ -6,10 +6,9 @@ build_gh:
         code: |
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
-          git checkout gh-pages
-          git pull origin
+          git clone --depth=1 --branch=gh-pages git@github.com:ThierryO/drat.git
+          cd drat
           Rscript "render.R"
-          Rscript -e "devtools::install_github('hadley/pkgdown')"
           git add --all
           git commit -m "Render markdown"
           git push origin
