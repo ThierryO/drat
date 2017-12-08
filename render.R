@@ -1,3 +1,10 @@
+options(
+  repos = c(
+    getOption("repos"),
+    INLA = "https://inla.r-inla-download.org/R/stable"
+  )
+)
+current <- getwd()
 rmarkdown::render("index.Rmd")
 unlink("docs", recursive = TRUE)
 packages <- readRDS("src/contrib/PACKAGES.rds")
@@ -38,3 +45,4 @@ junk <- sapply(
     }
   }
 )
+setwd(current)
