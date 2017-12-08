@@ -8,7 +8,10 @@ build_gh:
           git config --global user.name "INBO CI"
           git clone --depth=1 --branch=gh-pages https://$GH_OAUTH@github.com/ThierryO/drat.git
           cd drat
-          Rscript "render.R"
-          git add --all
-          git commit -m "Render markdown"
-          git push origin
+          done = git log -1 | grep "Render markdown"
+          if [[-z done]]
+            Rscript "render.R"
+            git add --all
+            git commit -m "Render markdown"
+            git push origin
+          if
