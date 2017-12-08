@@ -4,6 +4,8 @@ build_gh:
     - script:
         name: render Rmd files
         code: |
+          apt-get update
+          apt-get install ssh
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
           git clone --depth=1 --branch=gh-pages git@github.com:ThierryO/drat.git
