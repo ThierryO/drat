@@ -3,4 +3,4 @@ build_gh:
   steps:
     - script:
         name: render Rmd files
-        code: render.sh
+        code: ./render.sh
