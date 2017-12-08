@@ -3,15 +3,4 @@ build_gh:
   steps:
     - script:
         name: render Rmd files
-        code: |
-          git config --global user.email "bmk@inbo.be"
-          git config --global user.name "INBO CI"
-          git clone --depth=1 --branch=gh-pages https://$GH_OAUTH@github.com/ThierryO/drat.git
-          cd drat
-          done=$(git log -1 | grep "Render markdown")
-          if [[-z done]]
-            Rscript "render.R"
-            git add --all
-            git commit -m "Render markdown"
-            git push origin
-          fi
+        code: render.sh
