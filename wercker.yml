@@ -6,8 +6,6 @@ build_gh:
         code: |
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
-          git clone --depth 1 https://github.com/inbo/drat.git drat --branch=gh-pages
-          cd drat
           Rscript "render.R"
           git add --all
           git commit -m "Render markdown"
