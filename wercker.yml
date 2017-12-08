@@ -4,6 +4,7 @@ build_gh:
     - script:
         name: render Rmd files
         code: |
+          Rscript -e "devtools::install_github('hadley/pkgdown')"
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
           Rscript "render.R"
