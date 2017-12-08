@@ -4,10 +4,12 @@ build_gh:
     - script:
         name: render Rmd files
         code: |
-          Rscript -e "devtools::install_github('hadley/pkgdown')"
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
+          git checkout gh_pages
+          git pull origin
           Rscript "render.R"
+          Rscript -e "devtools::install_github('hadley/pkgdown')"
           git add --all
           git commit -m "Render markdown"
           git push origin
