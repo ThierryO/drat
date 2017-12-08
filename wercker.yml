@@ -1,7 +1,8 @@
 box: rocker/tidyverse
 build_gh:
   steps:
-    - install-packages: libgeos-dev libgdal-dev
+    - install-packages:
+        packages: libgeos-dev libgdal-dev
     - script:
         name: render Rmd files
         code: ./render.sh
