@@ -6,7 +6,7 @@ build_gh:
         code: |
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
-          git checkout gh_pages
+          git checkout gh-pages
           git pull origin
           Rscript "render.R"
           Rscript -e "devtools::install_github('hadley/pkgdown')"
