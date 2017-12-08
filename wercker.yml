@@ -4,10 +4,9 @@ build_gh:
     - script:
         name: render Rmd files
         code: |
-          apt-get -y install --no-install-recommends ssh
           git config --global user.email "bmk@inbo.be"
           git config --global user.name "INBO CI"
-          git clone --depth=1 --branch=gh-pages git@github.com:ThierryO/drat.git
+          git clone --depth=1 --branch=gh-pages https://$GH_OAUTH@github.com/ThierryO/drat.git
           cd drat
           Rscript "render.R"
           git add --all
