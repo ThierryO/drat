@@ -10,18 +10,20 @@ junk <- sapply(
   packages[, "Package"],
   function(package) {
     source <- paste(tempdir(), package, sep = "/")
+    setwd(source)
     target <- sprintf("docs/%s", package)
-    devtools::install_local(source)
-    test <- try(pkgdown::build_site(source, preview = FALSE))
+    devtools::install_local(
+      path = ".",
+      quiet = TRUE,
+      upgrade_dependencies = FALSE,
+      dependencies = TRUE
+    )
+    test <- try(pkgdown::build_site(preview = FALSE))
     if (inherits(test, "try-error")) {
       return(NULL)
     }
-    website <- list.files(
-      sprintf("%s/%s/docs", tempdir(), package),
-      recursive = TRUE,
-      full.names = TRUE
-    )
-    targets <- gsub("(.*/docs)/(.*)", paste0(target, "/\\2"), website)
+    website <- list.files("docs", recursive = TRUE, full.names = TRUE)
+    targets <- gsub("docs/(.*)", sprintf("%s/%s/\\1", current, target), website)
     junk <- sapply(
       unique(dirname(targets)),
       function(x) {
@@ -36,4 +38,3 @@ junk <- sapply(
     }
   }
 )
-file.remove(".Rbuildignore")
