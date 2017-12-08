@@ -47,9 +47,12 @@ dataset <- map(package, read.dcf, fields = c("Package", "Version")) %>%
 
 ## Latest version of available packages
 
+The package name links to a website with the documentation of the package.
+
 ```{r latest}
 dataset %>%
   select(Package, Version, OS) %>%
+  mutate(Package = sprintf("[%1$s](docs/%1$s/index.html)", Package)) %>%
   group_by(Package, OS) %>%
   slice(1) %>%
   spread(OS, Version) %>%
