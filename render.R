@@ -21,8 +21,7 @@ junk <- sapply(
     target <- sprintf("docs/%s", package)
     devtools::install_local(
       path = ".",
-      upgrade_dependencies = FALSE,
-      dependencies = c("Depends", "Imports", "LinkingTo", "Suggests")
+      upgrade_dependencies = FALSE
     )
     test <- try(pkgdown::build_site(preview = FALSE))
     if (inherits(test, "try-error")) {
