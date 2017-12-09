@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • INBOmd</title>
+<title>Example data.frame with species name column — species_example • inborutils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">INBOmd</a>
+      <a class="navbar-brand" href="../index.html">inborutils</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -60,8 +60,23 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/data_loaders_examples.html">(Down)load data from external partners</a>
+    </li>
+    <li>
+      <a href="../articles/gbif_name_match.html">GBIF scientific name matching</a>
+    </li>
+    <li>
+      <a href="../articles/guess_projection.html">Check coordinate system</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -76,39 +91,41 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Example data.frame with species name column</h1>
     </div>
 
-    <div class="contents">
-    <div id="inbomd-0-4-1-1-2017-12-06" class="section level1">
-<h1 class="hasAnchor">
-<a href="#inbomd-0-4-1-1-2017-12-06" class="anchor"></a>INBOmd 0.4.1.1 (2017-12-06)</h1>
-<ul>
-<li>
-<code><a href="../reference/inbo_rapport.html">inbo_rapport()</a></code> now handles UTF-8 strings (like éëèï…) correctly</li>
-<li>the package now displays at warning message at startup about the configuration</li>
-</ul>
-</div>
-    </div>
+    
+    <p>A dataset containing the prices and other attributes of almost 54,000
+diamonds.</p>
+    
+
+    <pre class="usage"><span class='no'>species_example</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 53940 rows and 10 variables:</p><dl class='dl-horizontal'>
+  <dt>scientificName</dt><dd><p>scientific name of the species</p></dd>
+  <dt>kingdom</dt><dd><p>kingdom to which the species belongs</p></dd>
+  <dt>euConcernStatus</dt><dd><p>level of concern according to EU directives</p></dd>
+</dl>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#inbomd-0-4-1-1-2017-12-06">0.4.1.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#format">Format</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Thierry Onkelinx.</p>
+  <p>Developed by Stijn Van Hoey, Pieter Verschelde.</p>
 </div>
 
 <div class="pkgdown">

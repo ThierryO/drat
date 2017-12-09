@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • INBOmd</title>
+<title>Variance inflation factor — vif • inborutils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">INBOmd</a>
+      <a class="navbar-brand" href="../index.html">inborutils</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -60,8 +60,23 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/data_loaders_examples.html">(Down)load data from external partners</a>
+    </li>
+    <li>
+      <a href="../articles/gbif_name_match.html">GBIF scientific name matching</a>
+    </li>
+    <li>
+      <a href="../articles/guess_projection.html">Check coordinate system</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -76,39 +91,58 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Variance inflation factor</h1>
     </div>
 
-    <div class="contents">
-    <div id="inbomd-0-4-1-1-2017-12-06" class="section level1">
-<h1 class="hasAnchor">
-<a href="#inbomd-0-4-1-1-2017-12-06" class="anchor"></a>INBOmd 0.4.1.1 (2017-12-06)</h1>
-<ul>
-<li>
-<code><a href="../reference/inbo_rapport.html">inbo_rapport()</a></code> now handles UTF-8 strings (like éëèï…) correctly</li>
-<li>the package now displays at warning message at startup about the configuration</li>
-</ul>
-</div>
-    </div>
+    
+    <p>Variance inflation factor</p>
+<p>Variance inflaction factor (lm model)</p>
+<p>Variance inflaction factor (data.frame)</p>
+    
+
+    <pre class="usage"><span class='fu'>vif</span>(<span class='no'>mod</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for lm</span>
+<span class='fu'>vif</span>(<span class='no'>mod</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for data.frame</span>
+<span class='fu'>vif</span>(<span class='no'>mod</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>mod</th>
+      <td><p>A model object (or data.frame). For the moment only lm and a plain dataset is implemented</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a matrix with for each variable de variance inflation factor, the degrees of freedom  en the rescaled variance inflation factor based on the degrees of freedom.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#inbomd-0-4-1-1-2017-12-06">0.4.1.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Thierry Onkelinx.</p>
+  <p>Developed by Stijn Van Hoey, Pieter Verschelde.</p>
 </div>
 
 <div class="pkgdown">
