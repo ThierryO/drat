@@ -5,23 +5,8 @@ options(
   )
 )
 current <- getwd()
-rmarkdown::render("index.Rmd")
 unlink("docs", recursive = TRUE)
 packages <- readRDS("src/contrib/PACKAGES.rds")
-to.do <- as.vector(packages[, c("Suggests", "LinkingTo", "Depends", "Imports")])
-to.do <- paste(na.omit(to.do), collapse = ", ")
-to.do <- gsub("\\n", " ", to.do)
-to.do <- gsub(" \\(.*?\\)", "", to.do)
-dependencies <- unique(strsplit(to.do, ", ")[[1]])
-dependencies <- dependencies[dependencies != "R"]
-junk <- sapply(
-  dependencies,
-  function(x){
-    if (length(find.package(x, quiet = TRUE)) == 0) {
-      install.packages(x)
-    }
-  }
-)
 tarbals <- sprintf(
   "src/contrib/%s_%s.tar.gz", packages[, "Package"], packages[, "Version"]
 )
@@ -33,7 +18,7 @@ junk <- sapply(
     source <- paste(tempdir(), package, sep = "/")
     setwd(source)
     target <- sprintf("docs/%s", package)
-    devtools::install_local(path = ".", upgrade_dependencies = FALSE)
+    devtools::install(upgrade_dependencies = FALSE, dependencies = TRUE)
     test <- try(pkgdown::build_site(preview = FALSE))
     if (inherits(test, "try-error")) {
       return(NULL)
@@ -55,3 +40,4 @@ junk <- sapply(
   }
 )
 setwd(current)
+rmarkdown::render("index.Rmd")

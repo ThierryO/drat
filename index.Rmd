@@ -36,26 +36,23 @@ os <- ifelse(
 dataset <- map(package, read.dcf, fields = c("Package", "Version")) %>%
   map(as_data_frame) %>%
   map2_df(os, ~mutate(.x, OS = .y)) %>%
-  extract(
-    Version, 
-    into = c("Major", "Minor", "Detail"), 
-    regex = "([[:digit:]]+)\\.([[:digit:]]+)\\.([[:digit:]]+)",
-    remove = FALSE
-  ) %>%
-  arrange(Package, desc(Major), desc(Minor), desc(Detail))
+  arrange(Package)
 ```
 
 ## Latest version of available packages
 
-The package name links to a website with the documentation of the package.
+Links on package names refer to documentation websites.
 
 ```{r latest}
 dataset %>%
-  select(Package, Version, OS) %>%
-  mutate(Package = sprintf("[%1$s](docs/%1$s/index.html)", Package)) %>%
-  group_by(Package, OS) %>%
-  slice(1) %>%
   spread(OS, Version) %>%
+  mutate(
+    Package = ifelse(
+      Package %in% list.files("docs"),
+      sprintf("[%1$s](docs/%1$s/index.html)", Package),
+      Package
+    )
+  ) %>%
   kable()
 ```
 
