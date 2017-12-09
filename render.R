@@ -21,7 +21,6 @@ junk <- sapply(
     target <- sprintf("docs/%s", package)
     devtools::install_local(
       path = ".",
-      quiet = TRUE,
       upgrade_dependencies = FALSE,
       dependencies = TRUE
     )
