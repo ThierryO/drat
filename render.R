@@ -8,11 +8,6 @@ current <- getwd()
 rmarkdown::render("index.Rmd")
 unlink("docs", recursive = TRUE)
 packages <- readRDS("src/contrib/PACKAGES.rds")
-tarbals <- sprintf(
-  "src/contrib/%s_%s.tar.gz", packages[, "Package"], packages[, "Version"]
-)
-junk <- lapply(tarbals, untar, exdir = tempdir())
-devtools::install_github("hadley/pkgdown")
 to.do <- as.vector(packages[, c("Suggests", "LinkingTo", "Depends", "Imports")])
 to.do <- paste(na.omit(to.do), collapse = ", ")
 to.do <- gsub("\\n", " ", to.do)
@@ -27,12 +22,18 @@ junk <- sapply(
     }
   }
 )
+tarbals <- sprintf(
+  "src/contrib/%s_%s.tar.gz", packages[, "Package"], packages[, "Version"]
+)
+junk <- lapply(tarbals, untar, exdir = tempdir())
+devtools::install_github("hadley/pkgdown", upgrade_dependencies = FALSE)
 junk <- sapply(
   packages[, "Package"],
   function(package) {
     source <- paste(tempdir(), package, sep = "/")
     setwd(source)
     target <- sprintf("docs/%s", package)
+    devtools::install_local(path = ".", upgrade_dependencies = FALSE)
     test <- try(pkgdown::build_site(preview = FALSE))
     if (inherits(test, "try-error")) {
       return(NULL)
