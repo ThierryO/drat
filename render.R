@@ -22,7 +22,7 @@ junk <- sapply(
     devtools::install_local(
       path = ".",
       upgrade_dependencies = FALSE,
-      dependencies = TRUE
+      dependencies = c("Depends", "Imports", "LinkingTo", "Suggests")
     )
     test <- try(pkgdown::build_site(preview = FALSE))
     if (inherits(test, "try-error")) {
