@@ -13,7 +13,7 @@ Suggests: testthat, lintr, knitr
 License: GPL-3
 
 Package: multimput
-Version: 0.2.7
+Version: 0.2.8
 Depends: R (>= 3.0.0)
 Imports: dplyr, methods, tibble, tidyr, assertthat, lme4, mvtnorm,
         digest

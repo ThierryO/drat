@@ -27,12 +27,12 @@ MD5sum: 32a246938ce0c02fa302051a9eae0488
 NeedsCompilation: no
 
 Package: multimput
-Version: 0.2.7
+Version: 0.2.8
 Depends: R (>= 3.0.0)
 Imports: dplyr, methods, tibble, tidyr, assertthat, lme4, mvtnorm,
         digest
 Suggests: testthat, INLA, snowfall, ggplot2, mgcv, knitr, MASS,
         rmarkdown
 License: GPL-3 | file LICENSE
-MD5sum: 1b7c1bbcfe914a1bf2be84e7a11eba7b
+MD5sum: 7b13b6b73608960894b1383b1f3ca6eb
 NeedsCompilation: no
